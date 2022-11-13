@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:fullscreen_window/fullscreen_window.dart';
 
 void main() {
@@ -16,34 +13,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  final _fullscreenWindowPlugin = FullscreenWindow();
 
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
+  String screenSizeText = "";
+
+  void setFullScreen(bool isFullScreen) {
+    FullscreenWindow.setFullScreen(isFullScreen);
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion =
-          await _fullscreenWindowPlugin.getPlatformVersion() ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
+  void showScreenSize(BuildContext context) async {
+    Size logicalSize = await FullscreenWindow.getScreenSize(context);
+    Size physicalSize = await FullscreenWindow.getScreenSize(null);
     setState(() {
-      _platformVersion = platformVersion;
+      screenSizeText = "Screen size (logical pixel): ${logicalSize.width} x ${logicalSize.height}\n";
+      screenSizeText += "Screen size (physical pixel): ${physicalSize.width} x ${physicalSize.height}\n";
     });
   }
 
@@ -52,11 +34,33 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('FullScreen example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton(
+                onPressed: () => setFullScreen(true), 
+                child: const Text("Enter FullScreen"),
+              ),
+
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () => setFullScreen(false), 
+                child: const Text("Exit FullScreen"),
+              ),
+
+              const SizedBox(height: 10),
+              Builder(builder: (context) => ElevatedButton(
+                onPressed: () => showScreenSize(context), 
+                child: const Text("Show screen size"),
+              )),
+
+              const SizedBox(height: 10),
+              if (screenSizeText.isNotEmpty) Text(screenSizeText),
+            ]),
+          ),
       ),
     );
   }

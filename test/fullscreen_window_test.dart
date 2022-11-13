@@ -1,15 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fullscreen_window/fullscreen_window.dart';
+//import 'package:fullscreen_window/fullscreen_window.dart';
 import 'package:fullscreen_window/fullscreen_window_platform_interface.dart';
 import 'package:fullscreen_window/fullscreen_window_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockFullscreenWindowPlatform
     with MockPlatformInterfaceMixin
-    implements FullscreenWindowPlatform {
-
-  @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+    //implements FullscreenWindowPlatform 
+{
 }
 
 void main() {
@@ -17,13 +15,5 @@ void main() {
 
   test('$MethodChannelFullscreenWindow is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelFullscreenWindow>());
-  });
-
-  test('getPlatformVersion', () async {
-    FullscreenWindow fullscreenWindowPlugin = FullscreenWindow();
-    MockFullscreenWindowPlatform fakePlatform = MockFullscreenWindowPlatform();
-    FullscreenWindowPlatform.instance = fakePlatform;
-
-    expect(await fullscreenWindowPlugin.getPlatformVersion(), '42');
   });
 }
