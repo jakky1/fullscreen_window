@@ -22,7 +22,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  fullscreen_window: ^1.0.0
+  fullscreen_window: ^1.0.1
 ```
 
 Or
