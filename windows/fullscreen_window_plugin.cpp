@@ -53,11 +53,9 @@ void setFullScreen(HWND hwnd, bool fullscreen)
 
         // NOTE: flutter layout is not correct after exit fullscreen, so we change window size to force re-layout
         // but sometimes it still has layout issues...
-        if (!g_saved_window_info.maximized) {
-            RECT r;
-            GetWindowRect(hwnd, &r);
-            SetWindowPos(hwnd, 0, r.left, r.top, r.right - r.left, r.bottom - r.top, SWP_NOZORDER | SWP_NOACTIVATE | SWP_FRAMECHANGED);
-        }
+        RECT bounds;
+        GetWindowRect(hwnd, &bounds);
+        SetWindowPos(hwnd, 0, bounds.left, bounds.top, bounds.right - bounds.left, bounds.bottom - bounds.top, SWP_NOZORDER | SWP_NOACTIVATE | SWP_FRAMECHANGED);
     }
 }
 

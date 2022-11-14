@@ -3,7 +3,7 @@ description: A Flutter plugin makes your window fullscreen.
 homepage: https://github.com/jakky1/fullscreen_window
 repository: https://github.com/jakky1/fullscreen_window
 issue_tracker: https://github.com/jakky1/fullscreen_window/issues
-version: 1.0.0
+version: 1.0.1
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
