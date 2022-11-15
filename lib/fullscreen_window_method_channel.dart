@@ -12,12 +12,12 @@ class MethodChannelFullscreenWindow extends FullscreenWindowPlatform {
   final methodChannel = const MethodChannel('fullscreen_window');
 
   @override
-  Future<void> setFullScreen(bool isFullScreen) async {
+  Future<void> setFullScreen_(bool isFullScreen) async {
     await methodChannel.invokeMethod<void>('setFullScreen', { "isFullScreen": isFullScreen });
   }
 
   @override
-  Future<Size> getScreenSize(BuildContext? context) async {
+  Future<Size> getScreenSize_(BuildContext? context) async {
     double devicePixelRatio = 1.0;
     if (context != null) {
       var data = context.findAncestorWidgetOfExactType<MediaQuery>()?.data;

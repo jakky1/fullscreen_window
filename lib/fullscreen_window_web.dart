@@ -20,7 +20,7 @@ class FullscreenWindowWeb extends FullscreenWindowPlatform {
 
   /// Returns a [String] containing the version of the platform.
   @override
-  Future<void> setFullScreen(bool isFullscreen) async {
+  Future<void> setFullScreen_(bool isFullscreen) async {
     if (isFullscreen) {
       html.window.document.documentElement?.requestFullscreen();
     } else {
@@ -29,7 +29,7 @@ class FullscreenWindowWeb extends FullscreenWindowPlatform {
   }
 
   @override
-  Future<Size> getScreenSize(BuildContext? context) async {
+  Future<Size> getScreenSize_(BuildContext? context) async {
     var width = html.window.screen?.width ?? 0;
     var height = html.window.screen?.height ?? 0;
     return Size(width.toDouble(), height.toDouble());

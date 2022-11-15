@@ -24,11 +24,11 @@ abstract class FullscreenWindowPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<void> setFullScreen(bool isFullScreen) {
+  Future<void> setFullScreen_(bool isFullScreen) {
     throw UnimplementedError();
   }
 
-  Future<Size> getScreenSize(BuildContext? context) {
+  Future<Size> getScreenSize_(BuildContext? context) {
     throw UnimplementedError();
   }
 

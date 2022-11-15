@@ -11,7 +11,7 @@ class FullscreenWindow {
 
   static Future<void> setFullScreen(bool isFullScreen) async {
     if (kIsWeb || Platform.isWindows) {
-      FullscreenWindowPlatform.instance.setFullScreen(isFullScreen);
+      FullscreenWindowPlatform.instance.setFullScreen_(isFullScreen);
     } else if (Platform.isAndroid || Platform.isIOS) {
       if (isFullScreen) { //OK for Android, fail for windows/web
         SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
@@ -25,9 +25,9 @@ class FullscreenWindow {
 
   static Future<Size> getScreenSize(BuildContext? context) async {
     if (kIsWeb || Platform.isWindows) {
-      return await FullscreenWindowPlatform.instance.getScreenSize(context);
+      return await FullscreenWindowPlatform.instance.getScreenSize_(context);
     } else if (Platform.isAndroid || Platform.isIOS) {
-      if (context != null) {
+      if (context == null) {
         throw UnsupportedError("context must not be null here in Android/iOS");
       }
       var data = context!.findAncestorWidgetOfExactType<MediaQuery>()!.data;
