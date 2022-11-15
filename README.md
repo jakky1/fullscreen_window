@@ -35,7 +35,7 @@ dependencies:
   fullscreen_window:
     git:
       url: https://github.com/jakky1/fullscreen_window.git
-      ref: main
+      ref: master
 ```
 
 ### Functions
