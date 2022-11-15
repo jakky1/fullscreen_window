@@ -9,7 +9,7 @@ import 'fullscreen_window_platform_interface.dart';
 
 class FullscreenWindow {
 
-  static Future<void> setFullScreen(bool isFullScreen) {
+  static Future<void> setFullScreen(bool isFullScreen) async {
     if (kIsWeb || Platform.isWindows) {
       FullscreenWindowPlatform.instance.setFullScreen(isFullScreen);
     } else if (Platform.isAndroid || Platform.isIOS) {
@@ -21,8 +21,6 @@ class FullscreenWindow {
     } else {
       log("[fullscren_window] setFullScreen() not support for this platform");
     }
-    
-    return FullscreenWindowPlatform.instance.setFullScreen(isFullScreen);
   }
 
   static Future<Size> getScreenSize(BuildContext? context) async {
