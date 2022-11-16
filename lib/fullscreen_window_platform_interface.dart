@@ -3,32 +3,32 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'fullscreen_window_method_channel.dart';
 
-abstract class FullscreenWindowPlatform extends PlatformInterface {
+abstract class FullScreenWindowPlatform extends PlatformInterface {
   /// Constructs a FullscreenWindowPlatform.
-  FullscreenWindowPlatform() : super(token: _token);
+  FullScreenWindowPlatform() : super(token: _token);
 
   static final Object _token = Object();
 
-  static FullscreenWindowPlatform _instance = MethodChannelFullscreenWindow();
+  static FullScreenWindowPlatform _instance = MethodChannelFullscreenWindow();
 
-  /// The default instance of [FullscreenWindowPlatform] to use.
+  /// The default instance of [FullScreenWindowPlatform] to use.
   ///
   /// Defaults to [MethodChannelFullscreenWindow].
-  static FullscreenWindowPlatform get instance => _instance;
+  static FullScreenWindowPlatform get instance => _instance;
 
   /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [FullscreenWindowPlatform] when
+  /// platform-specific class that extends [FullScreenWindowPlatform] when
   /// they register themselves.
-  static set instance(FullscreenWindowPlatform instance) {
+  static set instance(FullScreenWindowPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
 
-  Future<void> setFullScreen_(bool isFullScreen) {
+  Future<void> setFullScreen(bool isFullScreen) {
     throw UnimplementedError();
   }
 
-  Future<Size> getScreenSize_(BuildContext? context) {
+  Future<Size> getScreenSize(BuildContext? context) {
     throw UnimplementedError();
   }
 

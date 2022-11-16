@@ -5,19 +5,19 @@ import 'package:flutter/widgets.dart';
 
 import 'fullscreen_window_platform_interface.dart';
 
-/// An implementation of [FullscreenWindowPlatform] that uses method channels.
-class MethodChannelFullscreenWindow extends FullscreenWindowPlatform {
+/// An implementation of [FullScreenWindowPlatform] that uses method channels.
+class MethodChannelFullscreenWindow extends FullScreenWindowPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('fullscreen_window');
 
   @override
-  Future<void> setFullScreen_(bool isFullScreen) async {
+  Future<void> setFullScreen(bool isFullScreen) async {
     await methodChannel.invokeMethod<void>('setFullScreen', { "isFullScreen": isFullScreen });
   }
 
   @override
-  Future<Size> getScreenSize_(BuildContext? context) async {
+  Future<Size> getScreenSize(BuildContext? context) async {
     double devicePixelRatio = 1.0;
     if (context != null) {
       var data = context.findAncestorWidgetOfExactType<MediaQuery>()?.data;

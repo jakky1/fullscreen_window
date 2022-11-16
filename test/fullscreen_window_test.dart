@@ -11,7 +11,7 @@ class MockFullscreenWindowPlatform
 }
 
 void main() {
-  final FullscreenWindowPlatform initialPlatform = FullscreenWindowPlatform.instance;
+  final FullScreenWindowPlatform initialPlatform = FullScreenWindowPlatform.instance;
 
   test('$MethodChannelFullscreenWindow is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelFullscreenWindow>());

@@ -10,18 +10,18 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'fullscreen_window_platform_interface.dart';
 
 /// A web implementation of the FullscreenWindowPlatform of the FullscreenWindow plugin.
-class FullscreenWindowWeb extends FullscreenWindowPlatform {
+class FullScreenWindowWeb extends FullScreenWindowPlatform {
   /// Constructs a FullscreenWindowWeb
-  FullscreenWindowWeb();
+  FullScreenWindowWeb();
 
   static void registerWith(Registrar registrar) {
-    FullscreenWindowPlatform.instance = FullscreenWindowWeb();
+    FullScreenWindowPlatform.instance = FullScreenWindowWeb();
   }
 
   /// Returns a [String] containing the version of the platform.
   @override
-  Future<void> setFullScreen_(bool isFullscreen) async {
-    if (isFullscreen) {
+  Future<void> setFullScreen(bool isFullScreen) async {
+    if (isFullScreen) {
       html.window.document.documentElement?.requestFullscreen();
     } else {
       html.window.document.exitFullscreen();
@@ -29,7 +29,7 @@ class FullscreenWindowWeb extends FullscreenWindowPlatform {
   }
 
   @override
-  Future<Size> getScreenSize_(BuildContext? context) async {
+  Future<Size> getScreenSize(BuildContext? context) async {
     var width = html.window.screen?.width ?? 0;
     var height = html.window.screen?.height ?? 0;
     return Size(width.toDouble(), height.toDouble());

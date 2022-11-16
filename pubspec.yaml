@@ -41,8 +41,12 @@ flutter:
       windows:
         pluginClass: FullscreenWindowPluginCApi
       web:
-        pluginClass: FullscreenWindowWeb
+        pluginClass: FullScreenWindowWeb
         fileName: fullscreen_window_web.dart
+      android:
+        dartPluginClass: FullScreenWindowAndroid
+      ios:
+        dartPluginClass: FullScreenWindowAndroid
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

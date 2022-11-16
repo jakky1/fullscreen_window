@@ -17,12 +17,12 @@ class _MyAppState extends State<MyApp> {
   String screenSizeText = "";
 
   void setFullScreen(bool isFullScreen) {
-    FullscreenWindow.setFullScreen(isFullScreen);
+    FullScreenWindow.setFullScreen(isFullScreen);
   }
 
   void showScreenSize(BuildContext context) async {
-    Size logicalSize = await FullscreenWindow.getScreenSize(context);
-    Size physicalSize = await FullscreenWindow.getScreenSize(null);
+    Size logicalSize = await FullScreenWindow.getScreenSize(context);
+    Size physicalSize = await FullScreenWindow.getScreenSize(null);
     setState(() {
       screenSizeText = "Screen size (logical pixel): ${logicalSize.width} x ${logicalSize.height}\n";
       screenSizeText += "Screen size (physical pixel): ${physicalSize.width} x ${physicalSize.height}\n";
