@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Fix plugin issue
+
 ## 1.0.2
 
 * Add support for Web / Android / iOS

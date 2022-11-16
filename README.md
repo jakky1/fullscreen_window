@@ -25,7 +25,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  fullscreen_window: ^1.0.2
+  fullscreen_window: ^1.0.3
 ```
 
 Or
@@ -43,10 +43,10 @@ dependencies:
 ```
 import 'package:fullscreen_window/fullscreen_window.dart';
 
-FullscreenWindow.setFullScreen(true);    // enter fullscreen
-FullscreenWindow.setFullScreen(false);   // exit fullscreen
-Size screen_logical_size = await FullscreenWindow.getScreenSize(context);
-Size screen_physical_size = await FullscreenWindow.getScreenSize(null);
+FullScreenWindow.setFullScreen(true);    // enter fullscreen
+FullScreenWindow.setFullScreen(false);   // exit fullscreen
+Size screen_logical_size = await FullScreenWindow.getScreenSize(context);
+Size screen_physical_size = await FullScreenWindow.getScreenSize(null);
 ```
 
 ### Example
@@ -71,12 +71,12 @@ class _MyAppState extends State<MyApp> {
   String screenSizeText = "";
 
   void setFullScreen(bool isFullScreen) {
-    FullscreenWindow.setFullScreen(isFullScreen);
+    FullScreenWindow.setFullScreen(isFullScreen);
   }
 
   void showScreenSize(BuildContext context) async {
-    Size logicalSize = await FullscreenWindow.getScreenSize(context);
-    Size physicalSize = await FullscreenWindow.getScreenSize(null);
+    Size logicalSize = await FullScreenWindow.getScreenSize(context);
+    Size physicalSize = await FullScreenWindow.getScreenSize(null);
     setState(() {
       screenSizeText = "Screen size (logical pixel): ${logicalSize.width} x ${logicalSize.height}\n";
       screenSizeText += "Screen size (physical pixel): ${physicalSize.width} x ${physicalSize.height}\n";
@@ -119,5 +119,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
 ```
