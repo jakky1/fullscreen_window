@@ -1,3 +1,7 @@
+## 1.0.4
+
+* change sdk version limitation
+
 ## 1.0.3
 
 * Fix plugin issue
