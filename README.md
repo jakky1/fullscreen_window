@@ -40,7 +40,7 @@ dependencies:
 
 ### Functions
 
-```
+```dart
 import 'package:fullscreen_window/fullscreen_window.dart';
 
 FullScreenWindow.setFullScreen(true);    // enter fullscreen
@@ -51,7 +51,7 @@ Size screen_physical_size = await FullScreenWindow.getScreenSize(null);
 
 ### Example
 
-```
+```dart
 import 'package:flutter/material.dart';
 import 'package:fullscreen_window/fullscreen_window.dart';
 
