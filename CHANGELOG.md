@@ -1,3 +1,7 @@
+## 1.1.0
+
+* migrate dart:html to package:web to support WASM in web
+
 ## 1.0.4
 
 * change sdk version limitation
