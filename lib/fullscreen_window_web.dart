@@ -2,7 +2,7 @@
 // of your plugin as a separate package, instead of inlining it in the same
 // package as the core of your plugin.
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html show window;
+import 'package:web/web.dart' as web show window;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -22,16 +22,16 @@ class FullScreenWindowWeb extends FullScreenWindowPlatform {
   @override
   Future<void> setFullScreen(bool isFullScreen) async {
     if (isFullScreen) {
-      html.window.document.documentElement?.requestFullscreen();
+      web.window.document.documentElement?.requestFullscreen();
     } else {
-      html.window.document.exitFullscreen();
+      web.window.document.exitFullscreen();
     }
   }
 
   @override
   Future<Size> getScreenSize(BuildContext? context) async {
-    var width = html.window.screen?.width ?? 0;
-    var height = html.window.screen?.height ?? 0;
+    var width = web.window.screen.width;
+    var height = web.window.screen.height;
     return Size(width.toDouble(), height.toDouble());
   }
 
