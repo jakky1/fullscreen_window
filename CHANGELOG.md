@@ -1,3 +1,7 @@
+## 1.2.0
+
+* support Linux platform
+
 ## 1.1.0
 
 * migrate dart:html to package:web to support WASM in web

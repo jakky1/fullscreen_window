@@ -1,18 +1,13 @@
 # fullscreen_window
 
-![pub version][visits-count-image] 
-
-[visits-count-image]: https://img.shields.io/badge/dynamic/json?label=Visits%20Count&query=value&url=https://api.countapi.xyz/hit/jakky1_fullscren_window/visits
-
 This plugin makes your window fullscreen.
-
 
 
 ## Platform Support
 
-| Windows | Web | Android | iOS |
-| :-----: | :-----: | :-----: | :-----: |
-|    ✔️    |    ✔️    |    ✔️    |    ✔️    |
+| Windows | Linux | Web | Android | iOS |
+| :-----: | :-----: | :-----: | :-----: | :-----: |
+|    ✔️    |    ✔️    |    ✔️    |    ✔️    |    ✔️    |
 
 * Web is tested on Chrome / Edge (in Windows)
 * Not tested on iOS, but I think it should work because just use the pure Flutter API and works on Android.
@@ -25,7 +20,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  fullscreen_window: ^1.0.3
+  fullscreen_window: ^1.2.0
 ```
 
 Or
