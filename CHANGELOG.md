@@ -1,3 +1,7 @@
+## 1.2.1
+
+* Support multi window with package `desktop_multi_window`
+
 ## 1.2.0
 
 * support Linux platform
