@@ -13,9 +13,6 @@
 #include <memory>
 #include <sstream>
 
-flutter::PluginRegistrarWindows *g_registrar; // Jacky
-HWND g_NativeHWND = 0;
-
 struct
 {
     bool fullscreen;
@@ -77,8 +74,12 @@ void FullscreenWindowPlugin::RegisterWithRegistrar(
         plugin_pointer->HandleMethodCall(call, std::move(result));
       });
 
+  // Jacky {
+  plugin->m_registrar = registrar;
+  plugin->m_NativeHWND = registrar->GetView()->GetNativeWindow();
+  // Jacky }
+
   registrar->AddPlugin(std::move(plugin));
-  g_registrar = registrar; //Jacky
 }
 
 FullscreenWindowPlugin::FullscreenWindowPlugin() {}
@@ -93,8 +94,8 @@ void FullscreenWindowPlugin::HandleMethodCall(
 
   if (method_call.method_name().compare("setFullScreen") == 0) {
     auto isFullScreen = std::get<bool>(arguments[flutter::EncodableValue("isFullScreen")]);
-    g_NativeHWND = GetAncestor(g_registrar->GetView()->GetNativeWindow(), GA_ROOT);
-    setFullScreen(g_NativeHWND, isFullScreen);
+    auto hwnd = GetAncestor(m_NativeHWND, GA_ROOT);
+    setFullScreen(hwnd, isFullScreen);
     result->Success();
   } else if (method_call.method_name().compare("getScreenSize") == 0) {
     RECT bounds = {0};      

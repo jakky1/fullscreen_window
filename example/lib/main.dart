@@ -1,8 +1,17 @@
+import 'package:desktop_multi_window/desktop_multi_window.dart';
 import 'package:flutter/material.dart';
 import 'package:fullscreen_window/fullscreen_window.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
+}
+
+Future<void> createNewWindow() async {
+  final controller = await WindowController.create(
+    const WindowConfiguration(hiddenAtLaunch: true, arguments: ''),
+  );
+  await controller.show();
 }
 
 class MyApp extends StatefulWidget {
@@ -54,6 +63,11 @@ class _MyAppState extends State<MyApp> {
                       onPressed: () => showScreenSize(context),
                       child: const Text("Show screen size"),
                     )),
+            const SizedBox(height: 10),
+            const ElevatedButton(
+              onPressed: createNewWindow,
+              child: Text("create new window"),
+            ),
             const SizedBox(height: 10),
             if (screenSizeText.isNotEmpty) Text(screenSizeText),
           ]),

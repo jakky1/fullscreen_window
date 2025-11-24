@@ -25,6 +25,11 @@ class FullscreenWindowPlugin : public flutter::Plugin {
   void HandleMethodCall(
       const flutter::MethodCall<flutter::EncodableValue> &method_call,
       std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
+
+  // Jacky {
+  flutter::PluginRegistrarWindows *m_registrar; // Jacky
+  HWND m_NativeHWND = 0;
+  // Jacky }
 };
 
 }  // namespace fullscreen_window
